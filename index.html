@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+    <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -88,68 +89,7 @@ body.light button { background-color: #e0e0e0; color: #000; }
         <button onclick="reproducir(); agregar('0')">0</button>
         <button onclick="reproducir(); agregar('.')">.</button>
         <button onclick="reproducir(); agregar('+')">+</button>
-        function calcular() {
-
-    let input = pantalla.value.trim();
-    pantalla.value = "Pensando...";
-
-    setTimeout(() => {
-        try {
-
-            // Normalizar operadores visuales
-            input = input.replace(/÷/g, "/");
-            input = input.replace(/×/g, "*");
-
-            // Constantes
-            input = input.replace(/π/g, Math.PI);
-            input = input.replace(/e/g, Math.E);
-
-            // Potencias ^
-            input = input.replace(/(\d+)\^(\d+)/g, (_, a, b) => Math.pow(a, b));
-
-            // Raíz √()
-            input = input.replace(/√\(([^)]+)\)/g, (_, n) => Math.sqrt(eval(n)));
-
-            // Funciones trig
-            input = input.replace(/sin\(([^)]+)\)/g, (_, n) => Math.sin(eval(n)));
-            input = input.replace(/cos\(([^)]+)\)/g, (_, n) => Math.cos(eval(n)));
-            input = input.replace(/tan\(([^)]+)\)/g, (_, n) => Math.tan(eval(n)));
-
-            // Logaritmos
-            input = input.replace(/log\(([^)]+)\)/g, (_, n) => Math.log10(eval(n)));
-            input = input.replace(/ln\(([^)]+)\)/g, (_, n) => Math.log(eval(n)));
-
-            // Sumatoria simple ∑(a,b)
-            input = input.replace(/∑\((\d+),(\d+)\)/g, (_, a, b) => {
-                let suma = 0;
-                for (let i = parseInt(a); i <= parseInt(b); i++) suma += i;
-                return suma;
-            });
-
-            // Factorial !
-            input = input.replace(/(\d+)!/g, (_, n) => {
-                let f = 1;
-                for (let i = 1; i <= parseInt(n); i++) f *= i;
-                return f;
-            });
-
-            // Quitar símbolos decorativos que no son operaciones reales
-            input = input.replace(/[∞♾ℕℤℚℝℂαβγδεφμσθ∈∉∅⊆⊇⊂⊃∖℘∂∬∭∮∯∴∵⇒⇔∀∃∄∼¬∧∨↔→↦⊥⊤⊧⊢⊖⊗⊕⊙∠∣≃≄≇⟨⟩∪∩≈≅≡≟≦≧≪≫≬≭≰≱≲≳⊀⊁◅‰‱]/g, "");
-
-            let resultado = eval(input);
-
-            if (!isFinite(resultado)) {
-                pantalla.value = "∞";
-            } else {
-                pantalla.value = resultado;
-            }
-
-        } catch {
-            pantalla.value = "No entendido";
-        }
-
-    }, 800);
-}
+        <button onclick="calcular(); reproducir()">=</button>
     </div>
 
     <!-- Científicos -->
@@ -166,72 +106,11 @@ body.light button { background-color: #e0e0e0; color: #000; }
         <button onclick="reproducir(); agregar('Math.PI')">π</button>
         <button onclick="reproducir(); agregar('Math.E')">e</button>
         <button onclick="reproducir(); borrar()">←</button>
-        function calcular() {
-
-    let input = pantalla.value.trim();
-    pantalla.value = "Pensando...";
-
-    setTimeout(() => {
-        try {
-
-            // Normalizar operadores visuales
-            input = input.replace(/÷/g, "/");
-            input = input.replace(/×/g, "*");
-
-            // Constantes
-            input = input.replace(/π/g, Math.PI);
-            input = input.replace(/e/g, Math.E);
-
-            // Potencias ^
-            input = input.replace(/(\d+)\^(\d+)/g, (_, a, b) => Math.pow(a, b));
-
-            // Raíz √()
-            input = input.replace(/√\(([^)]+)\)/g, (_, n) => Math.sqrt(eval(n)));
-
-            // Funciones trig
-            input = input.replace(/sin\(([^)]+)\)/g, (_, n) => Math.sin(eval(n)));
-            input = input.replace(/cos\(([^)]+)\)/g, (_, n) => Math.cos(eval(n)));
-            input = input.replace(/tan\(([^)]+)\)/g, (_, n) => Math.tan(eval(n)));
-
-            // Logaritmos
-            input = input.replace(/log\(([^)]+)\)/g, (_, n) => Math.log10(eval(n)));
-            input = input.replace(/ln\(([^)]+)\)/g, (_, n) => Math.log(eval(n)));
-
-            // Sumatoria simple ∑(a,b)
-            input = input.replace(/∑\((\d+),(\d+)\)/g, (_, a, b) => {
-                let suma = 0;
-                for (let i = parseInt(a); i <= parseInt(b); i++) suma += i;
-                return suma;
-            });
-
-            // Factorial !
-            input = input.replace(/(\d+)!/g, (_, n) => {
-                let f = 1;
-                for (let i = 1; i <= parseInt(n); i++) f *= i;
-                return f;
-            });
-
-            // Quitar símbolos decorativos que no son operaciones reales
-            input = input.replace(/[∞♾ℕℤℚℝℂαβγδεφμσθ∈∉∅⊆⊇⊂⊃∖℘∂∬∭∮∯∴∵⇒⇔∀∃∄∼¬∧∨↔→↦⊥⊤⊧⊢⊖⊗⊕⊙∠∣≃≄≇⟨⟩∪∩≈≅≡≟≦≧≪≫≬≭≰≱≲≳⊀⊁◅‰‱]/g, "");
-
-            let resultado = eval(input);
-
-            if (!isFinite(resultado)) {
-                pantalla.value = "∞";
-            } else {
-                pantalla.value = resultado;
-            }
-
-        } catch {
-            pantalla.value = "No entendido";
-        }
-
-    }, 800);
-}
+        <button onclick="calcular(); reproducir()">=</button>
     </div>
 
     <!-- Álgebra -->
-<div id="algebra" class="seccion">
+    <div id="algebra" class="seccion">
         <button onclick="reproducir(); agregar('Math.pow(')">x²</button>
         <button onclick="reproducir(); agregar('Math.sqrt(')">√</button>
         <button onclick="reproducir(); agregar('Math.abs(')">|x|</button>
@@ -254,68 +133,7 @@ body.light button { background-color: #e0e0e0; color: #000; }
         <button onclick="reproducir(); agregar('Math.PI')">π</button>
         <button onclick="reproducir(); agregar('Math.E')">e</button>
         <button onclick="reproducir(); borrar()">←</button>
-        function calcular() {
-
-    let input = pantalla.value.trim();
-    pantalla.value = "Pensando...";
-
-    setTimeout(() => {
-        try {
-
-            // Normalizar operadores visuales
-            input = input.replace(/÷/g, "/");
-            input = input.replace(/×/g, "*");
-
-            // Constantes
-            input = input.replace(/π/g, Math.PI);
-            input = input.replace(/e/g, Math.E);
-
-            // Potencias ^
-            input = input.replace(/(\d+)\^(\d+)/g, (_, a, b) => Math.pow(a, b));
-
-            // Raíz √()
-            input = input.replace(/√\(([^)]+)\)/g, (_, n) => Math.sqrt(eval(n)));
-
-            // Funciones trig
-            input = input.replace(/sin\(([^)]+)\)/g, (_, n) => Math.sin(eval(n)));
-            input = input.replace(/cos\(([^)]+)\)/g, (_, n) => Math.cos(eval(n)));
-            input = input.replace(/tan\(([^)]+)\)/g, (_, n) => Math.tan(eval(n)));
-
-            // Logaritmos
-            input = input.replace(/log\(([^)]+)\)/g, (_, n) => Math.log10(eval(n)));
-            input = input.replace(/ln\(([^)]+)\)/g, (_, n) => Math.log(eval(n)));
-
-            // Sumatoria simple ∑(a,b)
-            input = input.replace(/∑\((\d+),(\d+)\)/g, (_, a, b) => {
-                let suma = 0;
-                for (let i = parseInt(a); i <= parseInt(b); i++) suma += i;
-                return suma;
-            });
-
-            // Factorial !
-            input = input.replace(/(\d+)!/g, (_, n) => {
-                let f = 1;
-                for (let i = 1; i <= parseInt(n); i++) f *= i;
-                return f;
-            });
-
-            // Quitar símbolos decorativos que no son operaciones reales
-            input = input.replace(/[∞♾ℕℤℚℝℂαβγδεφμσθ∈∉∅⊆⊇⊂⊃∖℘∂∬∭∮∯∴∵⇒⇔∀∃∄∼¬∧∨↔→↦⊥⊤⊧⊢⊖⊗⊕⊙∠∣≃≄≇⟨⟩∪∩≈≅≡≟≦≧≪≫≬≭≰≱≲≳⊀⊁◅‰‱]/g, "");
-
-            let resultado = eval(input);
-
-            if (!isFinite(resultado)) {
-                pantalla.value = "∞";
-            } else {
-                pantalla.value = resultado;
-            }
-
-        } catch {
-            pantalla.value = "No entendido";
-        }
-
-    }, 800);
-}
+        <button onclick="calcular(); reproducir()">=</button>
     </div>
 
     <!-- Operadores y comparaciones -->
@@ -330,68 +148,7 @@ body.light button { background-color: #e0e0e0; color: #000; }
         <button onclick="reproducir(); agregar('∛')">∛</button>
         <button onclick="reproducir(); agregar('∜')">∜</button>
         <button onclick="reproducir(); borrar()">←</button>
-        function calcular() {
-
-    let input = pantalla.value.trim();
-    pantalla.value = "Pensando...";
-
-    setTimeout(() => {
-        try {
-
-            // Normalizar operadores visuales
-            input = input.replace(/÷/g, "/");
-            input = input.replace(/×/g, "*");
-
-            // Constantes
-            input = input.replace(/π/g, Math.PI);
-            input = input.replace(/e/g, Math.E);
-
-            // Potencias ^
-            input = input.replace(/(\d+)\^(\d+)/g, (_, a, b) => Math.pow(a, b));
-
-            // Raíz √()
-            input = input.replace(/√\(([^)]+)\)/g, (_, n) => Math.sqrt(eval(n)));
-
-            // Funciones trig
-            input = input.replace(/sin\(([^)]+)\)/g, (_, n) => Math.sin(eval(n)));
-            input = input.replace(/cos\(([^)]+)\)/g, (_, n) => Math.cos(eval(n)));
-            input = input.replace(/tan\(([^)]+)\)/g, (_, n) => Math.tan(eval(n)));
-
-            // Logaritmos
-            input = input.replace(/log\(([^)]+)\)/g, (_, n) => Math.log10(eval(n)));
-            input = input.replace(/ln\(([^)]+)\)/g, (_, n) => Math.log(eval(n)));
-
-            // Sumatoria simple ∑(a,b)
-            input = input.replace(/∑\((\d+),(\d+)\)/g, (_, a, b) => {
-                let suma = 0;
-                for (let i = parseInt(a); i <= parseInt(b); i++) suma += i;
-                return suma;
-            });
-
-            // Factorial !
-            input = input.replace(/(\d+)!/g, (_, n) => {
-                let f = 1;
-                for (let i = 1; i <= parseInt(n); i++) f *= i;
-                return f;
-            });
-
-            // Quitar símbolos decorativos que no son operaciones reales
-            input = input.replace(/[∞♾ℕℤℚℝℂαβγδεφμσθ∈∉∅⊆⊇⊂⊃∖℘∂∬∭∮∯∴∵⇒⇔∀∃∄∼¬∧∨↔→↦⊥⊤⊧⊢⊖⊗⊕⊙∠∣≃≄≇⟨⟩∪∩≈≅≡≟≦≧≪≫≬≭≰≱≲≳⊀⊁◅‰‱]/g, "");
-
-            let resultado = eval(input);
-
-            if (!isFinite(resultado)) {
-                pantalla.value = "∞";
-            } else {
-                pantalla.value = resultado;
-            }
-
-        } catch {
-            pantalla.value = "No entendido";
-        }
-
-    }, 800);
-}
+        <button onclick="calcular(); reproducir()">=</button>
     </div>
 
     <!-- Letras Griegas -->
@@ -407,68 +164,7 @@ body.light button { background-color: #e0e0e0; color: #000; }
         <button onclick="reproducir(); agregar('σ')">σ</button>
         <button onclick="reproducir(); agregar('θ')">θ</button>
         <button onclick="reproducir(); borrar()">←</button>
-        function calcular() {
-
-    let input = pantalla.value.trim();
-    pantalla.value = "Pensando...";
-
-    setTimeout(() => {
-        try {
-
-            // Normalizar operadores visuales
-            input = input.replace(/÷/g, "/");
-            input = input.replace(/×/g, "*");
-
-            // Constantes
-            input = input.replace(/π/g, Math.PI);
-            input = input.replace(/e/g, Math.E);
-
-            // Potencias ^
-            input = input.replace(/(\d+)\^(\d+)/g, (_, a, b) => Math.pow(a, b));
-
-            // Raíz √()
-            input = input.replace(/√\(([^)]+)\)/g, (_, n) => Math.sqrt(eval(n)));
-
-            // Funciones trig
-            input = input.replace(/sin\(([^)]+)\)/g, (_, n) => Math.sin(eval(n)));
-            input = input.replace(/cos\(([^)]+)\)/g, (_, n) => Math.cos(eval(n)));
-            input = input.replace(/tan\(([^)]+)\)/g, (_, n) => Math.tan(eval(n)));
-
-            // Logaritmos
-            input = input.replace(/log\(([^)]+)\)/g, (_, n) => Math.log10(eval(n)));
-            input = input.replace(/ln\(([^)]+)\)/g, (_, n) => Math.log(eval(n)));
-
-            // Sumatoria simple ∑(a,b)
-            input = input.replace(/∑\((\d+),(\d+)\)/g, (_, a, b) => {
-                let suma = 0;
-                for (let i = parseInt(a); i <= parseInt(b); i++) suma += i;
-                return suma;
-            });
-
-            // Factorial !
-            input = input.replace(/(\d+)!/g, (_, n) => {
-                let f = 1;
-                for (let i = 1; i <= parseInt(n); i++) f *= i;
-                return f;
-            });
-
-            // Quitar símbolos decorativos que no son operaciones reales
-            input = input.replace(/[∞♾ℕℤℚℝℂαβγδεφμσθ∈∉∅⊆⊇⊂⊃∖℘∂∬∭∮∯∴∵⇒⇔∀∃∄∼¬∧∨↔→↦⊥⊤⊧⊢⊖⊗⊕⊙∠∣≃≄≇⟨⟩∪∩≈≅≡≟≦≧≪≫≬≭≰≱≲≳⊀⊁◅‰‱]/g, "");
-
-            let resultado = eval(input);
-
-            if (!isFinite(resultado)) {
-                pantalla.value = "∞";
-            } else {
-                pantalla.value = resultado;
-            }
-
-        } catch {
-            pantalla.value = "No entendido";
-        }
-
-    }, 800);
-}
+        <button onclick="calcular(); reproducir()">=</button>
     </div>
 
     <!-- Conjuntos y relaciones -->
@@ -483,68 +179,7 @@ body.light button { background-color: #e0e0e0; color: #000; }
         <button onclick="reproducir(); agregar('∖')">∖</button>
         <button onclick="reproducir(); agregar('℘')">℘</button>
         <button onclick="reproducir(); borrar()">←</button>
-        function calcular() {
-
-    let input = pantalla.value.trim();
-    pantalla.value = "Pensando...";
-
-    setTimeout(() => {
-        try {
-
-            // Normalizar operadores visuales
-            input = input.replace(/÷/g, "/");
-            input = input.replace(/×/g, "*");
-
-            // Constantes
-            input = input.replace(/π/g, Math.PI);
-            input = input.replace(/e/g, Math.E);
-
-            // Potencias ^
-            input = input.replace(/(\d+)\^(\d+)/g, (_, a, b) => Math.pow(a, b));
-
-            // Raíz √()
-            input = input.replace(/√\(([^)]+)\)/g, (_, n) => Math.sqrt(eval(n)));
-
-            // Funciones trig
-            input = input.replace(/sin\(([^)]+)\)/g, (_, n) => Math.sin(eval(n)));
-            input = input.replace(/cos\(([^)]+)\)/g, (_, n) => Math.cos(eval(n)));
-            input = input.replace(/tan\(([^)]+)\)/g, (_, n) => Math.tan(eval(n)));
-
-            // Logaritmos
-            input = input.replace(/log\(([^)]+)\)/g, (_, n) => Math.log10(eval(n)));
-            input = input.replace(/ln\(([^)]+)\)/g, (_, n) => Math.log(eval(n)));
-
-            // Sumatoria simple ∑(a,b)
-            input = input.replace(/∑\((\d+),(\d+)\)/g, (_, a, b) => {
-                let suma = 0;
-                for (let i = parseInt(a); i <= parseInt(b); i++) suma += i;
-                return suma;
-            });
-
-            // Factorial !
-            input = input.replace(/(\d+)!/g, (_, n) => {
-                let f = 1;
-                for (let i = 1; i <= parseInt(n); i++) f *= i;
-                return f;
-            });
-
-            // Quitar símbolos decorativos que no son operaciones reales
-            input = input.replace(/[∞♾ℕℤℚℝℂαβγδεφμσθ∈∉∅⊆⊇⊂⊃∖℘∂∬∭∮∯∴∵⇒⇔∀∃∄∼¬∧∨↔→↦⊥⊤⊧⊢⊖⊗⊕⊙∠∣≃≄≇⟨⟩∪∩≈≅≡≟≦≧≪≫≬≭≰≱≲≳⊀⊁◅‰‱]/g, "");
-
-            let resultado = eval(input);
-
-            if (!isFinite(resultado)) {
-                pantalla.value = "∞";
-            } else {
-                pantalla.value = resultado;
-            }
-
-        } catch {
-            pantalla.value = "No entendido";
-        }
-
-    }, 800);
-}
+        <button onclick="calcular(); reproducir()">=</button>
     </div>
 
     <!-- Integrales y derivadas -->
@@ -556,68 +191,7 @@ body.light button { background-color: #e0e0e0; color: #000; }
         <button onclick="reproducir(); agregar('∮')">∮</button>
         <button onclick="reproducir(); agregar('∯')">∯</button>
         <button onclick="reproducir(); borrar()">←</button>
-        function calcular() {
-
-    let input = pantalla.value.trim();
-    pantalla.value = "Pensando...";
-
-    setTimeout(() => {
-        try {
-
-            // Normalizar operadores visuales
-            input = input.replace(/÷/g, "/");
-            input = input.replace(/×/g, "*");
-
-            // Constantes
-            input = input.replace(/π/g, Math.PI);
-            input = input.replace(/e/g, Math.E);
-
-            // Potencias ^
-            input = input.replace(/(\d+)\^(\d+)/g, (_, a, b) => Math.pow(a, b));
-
-            // Raíz √()
-            input = input.replace(/√\(([^)]+)\)/g, (_, n) => Math.sqrt(eval(n)));
-
-            // Funciones trig
-            input = input.replace(/sin\(([^)]+)\)/g, (_, n) => Math.sin(eval(n)));
-            input = input.replace(/cos\(([^)]+)\)/g, (_, n) => Math.cos(eval(n)));
-            input = input.replace(/tan\(([^)]+)\)/g, (_, n) => Math.tan(eval(n)));
-
-            // Logaritmos
-            input = input.replace(/log\(([^)]+)\)/g, (_, n) => Math.log10(eval(n)));
-            input = input.replace(/ln\(([^)]+)\)/g, (_, n) => Math.log(eval(n)));
-
-            // Sumatoria simple ∑(a,b)
-            input = input.replace(/∑\((\d+),(\d+)\)/g, (_, a, b) => {
-                let suma = 0;
-                for (let i = parseInt(a); i <= parseInt(b); i++) suma += i;
-                return suma;
-            });
-
-            // Factorial !
-            input = input.replace(/(\d+)!/g, (_, n) => {
-                let f = 1;
-                for (let i = 1; i <= parseInt(n); i++) f *= i;
-                return f;
-            });
-
-            // Quitar símbolos decorativos que no son operaciones reales
-            input = input.replace(/[∞♾ℕℤℚℝℂαβγδεφμσθ∈∉∅⊆⊇⊂⊃∖℘∂∬∭∮∯∴∵⇒⇔∀∃∄∼¬∧∨↔→↦⊥⊤⊧⊢⊖⊗⊕⊙∠∣≃≄≇⟨⟩∪∩≈≅≡≟≦≧≪≫≬≭≰≱≲≳⊀⊁◅‰‱]/g, "");
-
-            let resultado = eval(input);
-
-            if (!isFinite(resultado)) {
-                pantalla.value = "∞";
-            } else {
-                pantalla.value = resultado;
-            }
-
-        } catch {
-            pantalla.value = "No entendido";
-        }
-
-    }, 800);
-}
+        <button onclick="calcular(); reproducir()">=</button>
     </div>
 
     <!-- Lógica y flechas -->
@@ -634,68 +208,7 @@ body.light button { background-color: #e0e0e0; color: #000; }
         <button onclick="reproducir(); agregar('∧')">∧</button>
         <button onclick="reproducir(); agregar('∨')">∨</button>
         <button onclick="reproducir(); borrar()">←</button>
-        function calcular() {
-
-    let input = pantalla.value.trim();
-    pantalla.value = "Pensando...";
-
-    setTimeout(() => {
-        try {
-
-            // Normalizar operadores visuales
-            input = input.replace(/÷/g, "/");
-            input = input.replace(/×/g, "*");
-
-            // Constantes
-            input = input.replace(/π/g, Math.PI);
-            input = input.replace(/e/g, Math.E);
-
-            // Potencias ^
-            input = input.replace(/(\d+)\^(\d+)/g, (_, a, b) => Math.pow(a, b));
-
-            // Raíz √()
-            input = input.replace(/√\(([^)]+)\)/g, (_, n) => Math.sqrt(eval(n)));
-
-            // Funciones trig
-            input = input.replace(/sin\(([^)]+)\)/g, (_, n) => Math.sin(eval(n)));
-            input = input.replace(/cos\(([^)]+)\)/g, (_, n) => Math.cos(eval(n)));
-            input = input.replace(/tan\(([^)]+)\)/g, (_, n) => Math.tan(eval(n)));
-
-            // Logaritmos
-            input = input.replace(/log\(([^)]+)\)/g, (_, n) => Math.log10(eval(n)));
-            input = input.replace(/ln\(([^)]+)\)/g, (_, n) => Math.log(eval(n)));
-
-            // Sumatoria simple ∑(a,b)
-            input = input.replace(/∑\((\d+),(\d+)\)/g, (_, a, b) => {
-                let suma = 0;
-                for (let i = parseInt(a); i <= parseInt(b); i++) suma += i;
-                return suma;
-            });
-
-            // Factorial !
-            input = input.replace(/(\d+)!/g, (_, n) => {
-                let f = 1;
-                for (let i = 1; i <= parseInt(n); i++) f *= i;
-                return f;
-            });
-
-            // Quitar símbolos decorativos que no son operaciones reales
-            input = input.replace(/[∞♾ℕℤℚℝℂαβγδεφμσθ∈∉∅⊆⊇⊂⊃∖℘∂∬∭∮∯∴∵⇒⇔∀∃∄∼¬∧∨↔→↦⊥⊤⊧⊢⊖⊗⊕⊙∠∣≃≄≇⟨⟩∪∩≈≅≡≟≦≧≪≫≬≭≰≱≲≳⊀⊁◅‰‱]/g, "");
-
-            let resultado = eval(input);
-
-            if (!isFinite(resultado)) {
-                pantalla.value = "∞";
-            } else {
-                pantalla.value = resultado;
-            }
-
-        } catch {
-            pantalla.value = "No entendido";
-        }
-
-    }, 800);
-}
+        <button onclick="calcular(); reproducir()">=</button>
     </div>
 
     <!-- Flechas y relaciones extra -->
@@ -726,68 +239,7 @@ body.light button { background-color: #e0e0e0; color: #000; }
         <button onclick="reproducir(); agregar('≅')">≅</button>
         <button onclick="reproducir(); agregar('≡')">≡</button>
         <button onclick="reproducir(); borrar()">←</button>
-        function calcular() {
-
-    let input = pantalla.value.trim();
-    pantalla.value = "Pensando...";
-
-    setTimeout(() => {
-        try {
-
-            // Normalizar operadores visuales
-            input = input.replace(/÷/g, "/");
-            input = input.replace(/×/g, "*");
-
-            // Constantes
-            input = input.replace(/π/g, Math.PI);
-            input = input.replace(/e/g, Math.E);
-
-            // Potencias ^
-            input = input.replace(/(\d+)\^(\d+)/g, (_, a, b) => Math.pow(a, b));
-
-            // Raíz √()
-            input = input.replace(/√\(([^)]+)\)/g, (_, n) => Math.sqrt(eval(n)));
-
-            // Funciones trig
-            input = input.replace(/sin\(([^)]+)\)/g, (_, n) => Math.sin(eval(n)));
-            input = input.replace(/cos\(([^)]+)\)/g, (_, n) => Math.cos(eval(n)));
-            input = input.replace(/tan\(([^)]+)\)/g, (_, n) => Math.tan(eval(n)));
-
-            // Logaritmos
-            input = input.replace(/log\(([^)]+)\)/g, (_, n) => Math.log10(eval(n)));
-            input = input.replace(/ln\(([^)]+)\)/g, (_, n) => Math.log(eval(n)));
-
-            // Sumatoria simple ∑(a,b)
-            input = input.replace(/∑\((\d+),(\d+)\)/g, (_, a, b) => {
-                let suma = 0;
-                for (let i = parseInt(a); i <= parseInt(b); i++) suma += i;
-                return suma;
-            });
-
-            // Factorial !
-            input = input.replace(/(\d+)!/g, (_, n) => {
-                let f = 1;
-                for (let i = 1; i <= parseInt(n); i++) f *= i;
-                return f;
-            });
-
-            // Quitar símbolos decorativos que no son operaciones reales
-            input = input.replace(/[∞♾ℕℤℚℝℂαβγδεφμσθ∈∉∅⊆⊇⊂⊃∖℘∂∬∭∮∯∴∵⇒⇔∀∃∄∼¬∧∨↔→↦⊥⊤⊧⊢⊖⊗⊕⊙∠∣≃≄≇⟨⟩∪∩≈≅≡≟≦≧≪≫≬≭≰≱≲≳⊀⊁◅‰‱]/g, "");
-
-            let resultado = eval(input);
-
-            if (!isFinite(resultado)) {
-                pantalla.value = "∞";
-            } else {
-                pantalla.value = resultado;
-            }
-
-        } catch {
-            pantalla.value = "No entendido";
-        }
-
-    }, 800);
-}
+        <button onclick="calcular(); reproducir()">=</button>
     </div>
 
 </div>
@@ -800,9 +252,48 @@ function reproducir() { clickSound.currentTime = 0; clickSound.play(); }
 function agregar(valor) { pantalla.value += valor; }
 function limpiar() { pantalla.value = ''; }
 function borrar() { pantalla.value = pantalla.value.slice(0, -1); }
-function calcular() { 
-    try { pantalla.value = eval(pantalla.value); } 
-    catch (e) { pantalla.value = 'Error'; } 
+function calcular() {
+
+    let input = pantalla.value.trim();
+    pantalla.value = "Pensando...";
+
+    setTimeout(() => {
+        try {
+
+            input = input.replace(/÷/g, "/");
+            input = input.replace(/×/g, "*");
+
+            input = input.replace(/π/g, Math.PI);
+            input = input.replace(/e/g, Math.E);
+
+            input = input.replace(/(\d+)\^(\d+)/g, (_, a, b) => Math.pow(a, b));
+
+            input = input.replace(/√\(([^)]+)\)/g, (_, n) => Math.sqrt(eval(n)));
+
+            input = input.replace(/sin\(([^)]+)\)/g, (_, n) => Math.sin(eval(n)));
+            input = input.replace(/cos\(([^)]+)\)/g, (_, n) => Math.cos(eval(n)));
+            input = input.replace(/tan\(([^)]+)\)/g, (_, n) => Math.tan(eval(n)));
+
+            input = input.replace(/log\(([^)]+)\)/g, (_, n) => Math.log10(eval(n)));
+            input = input.replace(/ln\(([^)]+)\)/g, (_, n) => Math.log(eval(n)));
+
+            input = input.replace(/(\d+)!/g, (_, n) => {
+                let f = 1;
+                for (let i = 1; i <= parseInt(n); i++) f *= i;
+                return f;
+            });
+
+            input = input.replace(/[∞♾ℕℤℚℝℂαβγδεφμσθ∈∉∅⊆⊇⊂⊃∖℘∂∬∭∮∯∴∵⇒⇔∀∃∄∼¬∧∨↔→↦⊥⊤⊧⊢⊖⊗⊕⊙∠∣≃≄≇⟨⟩∪∩≈≅≡]/g, "");
+
+            let resultado = eval(input);
+
+            pantalla.value = isFinite(resultado) ? resultado : "∞";
+
+        } catch {
+            pantalla.value = "No entendido";
+        }
+
+    }, 600);
 }
 function mostrarSeccion(id) {
     document.querySelectorAll('.seccion').forEach(s => s.classList.remove('active'));
@@ -818,4 +309,4 @@ function cambiarColor(color) {
 </script>
 
 </body>
-</html>
+</html>    
