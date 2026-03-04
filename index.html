@@ -288,6 +288,7 @@ function calcular() {
             input = input.replace(/[∞♾ℕℤℚℝℂαβγδεφμσθ∈∉∅⊆⊇⊂⊃∖℘∂∬∭∮∯∴∵⇒⇔∀∃∄∼¬∧∨↔→↦⊥⊤⊧⊢⊖⊗⊕⊙∠∣≃≄≇⟨⟩∪∩≈≅≡]/g, "");
             input = input.replace(/×/g, "*");
             input = input.replace(/÷/g, "/");
+            input = input.replace(/x/g, "*");
             let resultado = eval(input);
 
             pantalla.value = isFinite(resultado) ? resultado : "∞";
@@ -313,5 +314,6 @@ function cambiarColor(color) {
 
 </body>
 </html>    
+
 
 
