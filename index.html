@@ -8,9 +8,15 @@
 body { font-family: sans-serif; transition: background 0.3s, color 0.3s; text-align:center; }
 .calculadora { width: 420px; margin: 20px auto; padding: 20px; border-radius: 10px; transition: background 0.3s, color 0.3s; text-align:center; }
 #pantalla { width: 100%; height: 40px; text-align: right; margin-bottom: 10px; font-size: 20px; transition: background 0.3s, color 0.3s; }
-.secciones-botones { display: flex; justify-content: center; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
-.secciones-botones button { padding: 8px; font-size: 14px; cursor: pointer; flex: 1; min-width: 80px; }
-.seccion { display: none; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 10px; }
+.secciones-botones {
+    display: flex;
+    justify-content: center; /* centrado */
+    flex-wrap: wrap;         /* si no caben, saltan a otra línea */
+    gap: 5px;
+    margin-bottom: 10px;
+}
+.secciones-botones button { flex: 1; min-width: 80px; padding: 8px; font-size: 14px; cursor: pointer; }
+.seccion { display: none; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 10px; }
 .seccion.active { display: grid; }
 button { padding: 15px; font-size: 18px; cursor: pointer; transition: background 0.3s, color 0.3s; }
 /* Modo oscuro */
@@ -49,11 +55,17 @@ body.light button { background-color: #e0e0e0; color: #000; }
     <div class="secciones-botones">
         <button onclick="mostrarSeccion('basicos')">Básicos</button>
         <button onclick="mostrarSeccion('ciencia')">Científicos</button>
-        <button onclick="mostrarSeccion('trigo')">Trigonom.</button>
         <button onclick="mostrarSeccion('algebra')">Álgebra</button>
+        <button onclick="mostrarSeccion('trigo')">Trigonom.</button>
+        <button onclick="mostrarSeccion('operadores')">Operadores</button>
+        <button onclick="mostrarSeccion('grecas')">Letras Griegas</button>
+        <button onclick="mostrarSeccion('conjuntos')">Conjuntos</button>
+        <button onclick="mostrarSeccion('integrales')">Integrales</button>
+        <button onclick="mostrarSeccion('logica')">Lógica</button>
+        <button onclick="mostrarSeccion('flechas')">Flechas</button>
     </div>
 
-    <!-- SECCIONES -->
+    <!-- SECCIONES RESTAURADAS -->
 
     <!-- Básicos -->
     <div id="basicos" class="seccion active">
@@ -61,21 +73,24 @@ body.light button { background-color: #e0e0e0; color: #000; }
         <button onclick="reproducir(); borrar()">←</button>
         <button onclick="reproducir(); agregar('(')">(</button>
         <button onclick="reproducir(); agregar(')')">)</button>
-        <button onclick="reproducir(); agregar('7')">7</button>
-        <button onclick="reproducir(); agregar('8')">8</button>
-        <button onclick="reproducir(); agregar('9')">9</button>
-        <button onclick="reproducir(); agregar('/')">/</button>
-        <button onclick="reproducir(); agregar('4')">4</button>
-        <button onclick="reproducir(); agregar('5')">5</button>
-        <button onclick="reproducir(); agregar('6')">6</button>
-        <button onclick="reproducir(); agregar('*')">*</button>
         <button onclick="reproducir(); agregar('1')">1</button>
         <button onclick="reproducir(); agregar('2')">2</button>
         <button onclick="reproducir(); agregar('3')">3</button>
-        <button onclick="reproducir(); agregar('-')">-</button>
+        <button onclick="reproducir(); agregar('4')">4</button>
+        <button onclick="reproducir(); agregar('5')">5</button>
+        <button onclick="reproducir(); agregar('6')">6</button>
+        <button onclick="reproducir(); agregar('7')">7</button>
+        <button onclick="reproducir(); agregar('8')">8</button>
+        <button onclick="reproducir(); agregar('9')">9</button>
         <button onclick="reproducir(); agregar('0')">0</button>
+        <button onclick="reproducir(); agregar('*')">*</button>
+        <button onclick="reproducir(); agregar('\')">\</button>
         <button onclick="reproducir(); agregar('.')">.</button>
+        <button onclick="reproducir(); agregar('0')">0</button>
         <button onclick="reproducir(); agregar('+')">+</button>
+        <button onclick="reproducir(); agregar('-')">-</button>
+        <button onclick="reproducir(); agregar('x')">x</button>
+        <button onclick="reproducir(); agregar('÷')">÷</button>
         <button onclick="calcular(); reproducir()">=</button>
     </div>
 
@@ -96,6 +111,19 @@ body.light button { background-color: #e0e0e0; color: #000; }
         <button onclick="calcular(); reproducir()">=</button>
     </div>
 
+    <!-- Álgebra -->
+    <div id="algebra" class="seccion">
+        <button onclick="reproducir(); agregar('Math.pow(')">x²</button>
+        <button onclick="reproducir(); agregar('Math.sqrt(')">√</button>
+        <button onclick="reproducir(); agregar('Math.abs(')">|x|</button>
+        <button onclick="reproducir(); agregar('Math.max(')">max</button>
+        <button onclick="reproducir(); agregar('Math.min(')">min</button>
+        <button onclick="reproducir(); agregar('(')">(</button>
+        <button onclick="reproducir(); agregar(')')">)</button>
+        <button onclick="reproducir(); borrar()">←</button>
+        <button onclick="calcular(); reproducir()">=</button>
+    </div>
+
     <!-- Trigonométricos -->
     <div id="trigo" class="seccion">
         <button onclick="reproducir(); agregar('Math.sin(')">sin</button>
@@ -110,15 +138,108 @@ body.light button { background-color: #e0e0e0; color: #000; }
         <button onclick="calcular(); reproducir()">=</button>
     </div>
 
-    <!-- Álgebra -->
-    <div id="algebra" class="seccion">
-        <button onclick="reproducir(); agregar('Math.pow(')">x²</button>
-        <button onclick="reproducir(); agregar('Math.sqrt(')">√</button>
-        <button onclick="reproducir(); agregar('Math.abs(')">|x|</button>
-        <button onclick="reproducir(); agregar('Math.max(')">max</button>
-        <button onclick="reproducir(); agregar('Math.min(')">min</button>
-        <button onclick="reproducir(); agregar('(')">(</button>
-        <button onclick="reproducir(); agregar(')')">)</button>
+    <!-- Operadores y comparaciones -->
+    <div id="operadores" class="seccion">
+        <button onclick="reproducir(); agregar('±')">±</button>
+        <button onclick="reproducir(); agregar('∓')">∓</button>
+        <button onclick="reproducir(); agregar('∶')">∶</button>
+        <button onclick="reproducir(); agregar('…')">…</button>
+        <button onclick="reproducir(); agregar('≤')">≤</button>
+        <button onclick="reproducir(); agregar('≥')">≥</button>
+        <button onclick="reproducir(); agregar('≠')">≠</button>
+        <button onclick="reproducir(); agregar('∛')">∛</button>
+        <button onclick="reproducir(); agregar('∜')">∜</button>
+        <button onclick="reproducir(); borrar()">←</button>
+        <button onclick="calcular(); reproducir()">=</button>
+    </div>
+
+    <!-- Letras Griegas -->
+    <div id="grecas" class="seccion">
+        <button onclick="reproducir(); agregar('α')">α</button>
+        <button onclick="reproducir(); agregar('β')">β</button>
+        <button onclick="reproducir(); agregar('γ')">γ</button>
+        <button onclick="reproducir(); agregar('δ')">δ</button>
+        <button onclick="reproducir(); agregar('ε')">ε</button>
+        <button onclick="reproducir(); agregar('φ')">φ</button>
+        <button onclick="reproducir(); agregar('μ')">μ</button>
+        <button onclick="reproducir(); agregar('π')">π</button>
+        <button onclick="reproducir(); agregar('σ')">σ</button>
+        <button onclick="reproducir(); agregar('θ')">θ</button>
+        <button onclick="reproducir(); borrar()">←</button>
+        <button onclick="calcular(); reproducir()">=</button>
+    </div>
+
+    <!-- Conjuntos y relaciones -->
+    <div id="conjuntos" class="seccion">
+        <button onclick="reproducir(); agregar('∈')">∈</button>
+        <button onclick="reproducir(); agregar('∉')">∉</button>
+        <button onclick="reproducir(); agregar('∅')">∅</button>
+        <button onclick="reproducir(); agregar('⊆')">⊆</button>
+        <button onclick="reproducir(); agregar('⊇')">⊇</button>
+        <button onclick="reproducir(); agregar('⊂')">⊂</button>
+        <button onclick="reproducir(); agregar('⊃')">⊃</button>
+        <button onclick="reproducir(); agregar('∖')">∖</button>
+        <button onclick="reproducir(); agregar('℘')">℘</button>
+        <button onclick="reproducir(); borrar()">←</button>
+        <button onclick="calcular(); reproducir()">=</button>
+    </div>
+
+    <!-- Integrales y derivadas -->
+    <div id="integrales" class="seccion">
+        <button onclick="reproducir(); agregar('∂')">∂</button>
+        <button onclick="reproducir(); agregar('∫')">∫</button>
+        <button onclick="reproducir(); agregar('∬')">∬</button>
+        <button onclick="reproducir(); agregar('∭')">∭</button>
+        <button onclick="reproducir(); agregar('∮')">∮</button>
+        <button onclick="reproducir(); agregar('∯')">∯</button>
+        <button onclick="reproducir(); borrar()">←</button>
+        <button onclick="calcular(); reproducir()">=</button>
+    </div>
+
+    <!-- Lógica y flechas -->
+    <div id="logica" class="seccion">
+        <button onclick="reproducir(); agregar('∴')">∴</button>
+        <button onclick="reproducir(); agregar('∵')">∵</button>
+        <button onclick="reproducir(); agregar('⇒')">⇒</button>
+        <button onclick="reproducir(); agregar('⇔')">⇔</button>
+        <button onclick="reproducir(); agregar('∀')">∀</button>
+        <button onclick="reproducir(); agregar('∃')">∃</button>
+        <button onclick="reproducir(); agregar('∄')">∄</button>
+        <button onclick="reproducir(); agregar('∼')">∼</button>
+        <button onclick="reproducir(); agregar('¬')">¬</button>
+        <button onclick="reproducir(); agregar('∧')">∧</button>
+        <button onclick="reproducir(); agregar('∨')">∨</button>
+        <button onclick="reproducir(); borrar()">←</button>
+        <button onclick="calcular(); reproducir()">=</button>
+    </div>
+
+    <!-- Flechas y relaciones extra -->
+    <div id="flechas" class="seccion">
+        <button onclick="reproducir(); agregar('↔')">↔</button>
+        <button onclick="reproducir(); agregar('→')">→</button>
+        <button onclick="reproducir(); agregar('↦')">↦</button>
+        <button onclick="reproducir(); agregar('⊥')">⊥</button>
+        <button onclick="reproducir(); agregar('⊤')">⊤</button>
+        <button onclick="reproducir(); agregar('⊧')">⊧</button>
+        <button onclick="reproducir(); agregar('⊢')">⊢</button>
+        <button onclick="reproducir(); agregar('⊖')">⊖</button>
+        <button onclick="reproducir(); agregar('⊗')">⊗</button>
+        <button onclick="reproducir(); agregar('⊕')">⊕</button>
+        <button onclick="reproducir(); agregar('⊙')">⊙</button>
+        <button onclick="reproducir(); agregar('∠')">∠</button>
+        <button onclick="reproducir(); agregar('∣')">∣</button>
+        <button onclick="reproducir(); agregar('≃')">≃</button>
+        <button onclick="reproducir(); agregar('≄')">≄</button>
+        <button onclick="reproducir(); agregar('≇')">≇</button>
+        <button onclick="reproducir(); agregar('°')">°</button>
+        <button onclick="reproducir(); agregar('⋅')">⋅</button>
+        <button onclick="reproducir(); agregar('⟨')">⟨</button>
+        <button onclick="reproducir(); agregar('⟩')">⟩</button>
+        <button onclick="reproducir(); agregar('∪')">∪</button>
+        <button onclick="reproducir(); agregar('∩')">∩</button>
+        <button onclick="reproducir(); agregar('≈')">≈</button>
+        <button onclick="reproducir(); agregar('≅')">≅</button>
+        <button onclick="reproducir(); agregar('≡')">≡</button>
         <button onclick="reproducir(); borrar()">←</button>
         <button onclick="calcular(); reproducir()">=</button>
     </div>
@@ -152,4 +273,3 @@ function cambiarColor(color) {
 
 </body>
 </html>
-
